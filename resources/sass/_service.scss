@@ -1,0 +1,60 @@
+//
+// service.scss
+//
+.services {
+    transition: all 0.5s ease;
+    .icon {
+        width: 80px;
+        height: 80px;
+        line-height: 72px;
+        border: 3px solid rgba($primary, 0.2);
+        background-color: rgba($primary, 0.065);
+        border-radius: 10px;
+        img {
+            width: 55px;
+        }
+    }
+    .content {
+        .title {
+            transition: all 0.5s ease;
+            &:hover {
+                color: $primary !important;
+            }
+        }
+    }
+    &.serv-primary {
+        transition: all 0.5s ease;
+    }
+    .big-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        opacity: 0.05;
+        font-size: 120px;
+        &.icon-right {
+            top: 10%;
+            right: -20px;
+            left: auto;
+        }
+    }
+    &:hover {
+        box-shadow: $shadow-lg;
+        &.serv-primary {
+            background-color: $primary !important;
+            border-radius: 10px !important;
+            color: $white !important;
+            .icon2, 
+            .para {
+                color: rgba($white, 0.5) !important;
+            }
+            .content,
+            .icon2 {
+                z-index: 2;
+            }
+        }
+        .big-icon {
+            opacity: 0.05;
+        }
+    }
+}

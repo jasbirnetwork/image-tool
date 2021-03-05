@@ -1,0 +1,165 @@
+//
+// _blog.scss
+//
+.blog-post {
+    .content {
+        .title {
+            &:hover {
+                color: $primary !important;
+            }
+        }
+        .post-meta {
+            .like, 
+            .comment, 
+            .read-more {
+                &:hover {
+                    color: $primary !important;
+                }
+            }
+        }
+    }
+}
+
+//Sidebar
+.sidebar {
+    .widget {
+        .widget-search {
+            form {
+                position: relative;
+            }
+        }
+        .widget-search, .searchform { 
+            input[type="text"] {
+                box-shadow: none;
+                padding: 12px 15px;
+                height: 45px;
+                font-size: 14px;
+                display: block;
+                width: 100%;
+                outline: none !important;
+                padding-right: 45px;
+            }
+            input[type="submit"] {
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                opacity: 0;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        .widget-search {
+            .searchform:after {
+                content: "\F349";
+                position: absolute;
+                font-family: "Material Design Icons";
+                right: 16px;
+                top: 15px;
+                font-size: 20px;
+                line-height: 20px;
+                pointer-events: none;
+            }
+        }
+        .widget-title {
+            font-size: 18px;
+        }
+        
+        .catagory{
+            li {
+                padding-bottom: 10px;
+                &:last-child {
+                    padding-bottom: 0;
+                }
+                a, span {
+                    font-size: 15px;
+                }
+                a {
+                    color: $dark;
+                    transition: all 0.5s ease;
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+        }      
+        .post-recent {
+            padding-bottom: 15px;
+            &:last-child {
+                padding-bottom: 0;
+            }
+            .post-recent-thumb {
+                width: 25%;
+            }
+            
+            .post-recent-content {
+                width: 75%;
+                padding-left: 10px;
+                a {
+                    display: block;
+                    color: $dark;
+                    font-size: 15px;
+                    transition: all 0.5s ease;
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+                span {
+                    font-size: 13px;
+                }
+            }
+        }
+        .tagcloud {
+            > a {
+                background: $gray-100;
+                color: $dark;
+                display: inline-block;
+                font-size: 9px;
+                letter-spacing: 1px;
+                margin: 5px 10px 5px 0;
+                padding: 8px 12px;
+                text-transform: uppercase;
+                transition: all 0.5s ease;
+                &:hover {
+                    background: $primary;
+                    color: $white;
+                }
+            }
+        }
+        .widget-grid {
+            .item {
+                position: relative;
+                width: 25%;
+                padding-top: 25%;
+                float: left;
+                a {
+                    position: absolute;
+                    display: block;
+                    top: 4px;
+                    left: 4px;
+                    right: 4px;
+                    bottom: 4px;
+                    overflow: hidden;
+                    img {
+                        position: absolute;
+                        width: 100%;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+//Single Blog
+.media-list {
+    .comment-desk {
+        a {
+            &:hover{
+                color: $primary !important;
+            }
+        }
+    }
+    .sub-comment {
+        border-left: 2px dashed $gray-300;
+    }
+}

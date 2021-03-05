@@ -1,0 +1,94 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$indigo: #6574cd;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+$white:    #ffffff;
+$primary:  #5368f1;
+$secondary:#8791a2;
+$success:  #6fda63;
+$warning:  #ffbb44;
+$info:     #24abc0;
+$danger:   #f05d27;
+$dark:     #35404e;
+$black:    #273444;
+$muted:    #8492a6;
+$light:    #f6f7fa; 
+
+//Colors
+$blue:                      #39aed6;
+$purple:                    #711958;
+$violet:                    #9B287B;
+$pink:                      #fc5185;
+$green:                     #90b846;
+
+// Gray
+$gray-100:                  #f8f9fa;
+$gray-200:                  #e9ecef;
+$gray-300:                  #dee2e6;
+$gray-400:                  #ced4da;
+$gray-500:                  #adb5bd;
+$gray-600:                  #6c757d; 
+$gray-700:                  #495057;
+
+// Overlay
+$overlay:                   rgba($dark, 0.45);
+$overlay-white:             rgba($white, 0.85);
+
+// Body Background
+$body-color:                #35404e;
+$shadow:                    0 0 5px rgba(0,0,0,.15);
+$shadow-lg:                 0 10px 25px rgba($dark, 0.15);
+$footer:                    rgba($black, 0.9);
+// Base font
+// $font-size-base:            16px;
+
+$font-family-base:          'Nunito Sans', sans-serif;
+$font-family-secondary:     'Nunito Sans', sans-serif;
+
+$colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "warning": $warning,
+    "info": $info,
+    "danger": $danger,
+    "dark": $dark,
+    "muted": $muted,
+    "light": $light,
+    "blue": $blue,
+    "purple": $purple,
+    "violet": $violet,
+    "pink": $pink,
+    "green": $green,
+    "footer": $footer,
+);
+
+$font-sizes: (
+    h1: 42px,
+    h2: 36px,
+    h3: 30px,
+    h4: 24px,
+    h5: 20px,
+    h6: 16px,
+    p: 16px,
+);
+
+$display-font-sizes: (
+    "display-1": 80px,
+    "display-2": 72px,
+    "display-3": 64px,
+    "display-4": 56px,
+)

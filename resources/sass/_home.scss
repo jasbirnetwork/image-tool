@@ -1,0 +1,52 @@
+//
+// home.scss
+//
+@mixin home-common {
+    background-size: cover;
+    align-self: center;
+    position: relative;
+    background-position: center center;
+}
+.bg-home {
+    height: 100vh;    
+    @include home-common();
+}
+.bg-half-260 {
+    padding: 260px 0;    
+    @include home-common();
+}
+.bg-half-170 {
+    padding: 170px 0;    
+    @include home-common();
+}
+
+//Domain Name
+.domain-name {
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+    margin: -170px 0 0px;
+    box-shadow: $shadow;
+}
+
+//Email Hosting
+.home-dashboard {
+    img {
+        position: relative;
+        top: 60px;
+        z-index: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .domain-name {
+        margin: -140px 0 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .bg-home, .bg-half-170, .bg-half-260, .main-slider .slides .bg-slider, .bg-marketing {        
+        padding: 150px 0;
+        height: auto;
+    } 
+}

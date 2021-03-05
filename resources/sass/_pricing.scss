@@ -1,0 +1,68 @@
+//
+// pricing.scss
+//
+.pricing {
+    transition: all 0.5s ease;
+    .feature-list {
+        li {
+            margin: 8px 0;
+        }
+    }
+    &.hosting-rate {
+        &:hover {
+            box-shadow: $shadow-lg !important;
+            .plan-name {
+                transition: all 0.5s ease;
+                background-color: $primary;
+                color: $white !important;
+                .para {
+                    color: rgba($white, 0.5) !important;
+                }
+            }
+            &.best-plan {
+                .lable {
+                    background-color: $white !important;
+                    .best {
+                        color: $primary !important;
+                    }
+                }
+            }
+        }
+    }
+    &.best-plan {
+        .lable {
+            width: 200px;
+            position: absolute;
+            top: 15px;
+            right: -65px;
+            transform: rotate(45deg);
+            z-index: 1;
+            transition: all 0.5s ease;
+        }
+    }
+}
+
+.box-hover {
+    transition: all 0.5s ease;
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: $shadow-lg !important;
+    }
+}
+
+.box-top-position {
+    position: relative;
+    z-index: 2;
+    margin: -250px 0 0px;
+    &:hover {
+        .full-img {
+            opacity: 0.08;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .box-top-position {
+        margin: 0 0 30px;
+    }
+}

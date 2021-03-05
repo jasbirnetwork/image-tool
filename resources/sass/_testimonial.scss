@@ -1,0 +1,54 @@
+//
+// _testimonial.scss
+//
+.client-bar {
+    cursor: e-resize;
+    .content {
+        &:before {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            box-sizing: border-box;
+            border: 8px solid $dark;
+            border-color: transparent $light $light transparent;
+            transform-origin: 0 0;
+            transform: rotate(45deg);
+            box-shadow: 2px 2px 2px -1px rgba($dark, 0.15);
+        }
+        .icons {
+            position: absolute;
+            top: -80px;
+            left: 0;
+            right: 0;
+            font-size: 150px;
+            opacity: 0.08;
+        }
+    }
+}
+.owl-theme {
+    .owl-dots {
+        .owl-dot {
+            span {
+                height: 8px;
+                width: 8px;
+                border-radius: 30px;
+                background: rgba($primary, 0.5) !important;
+                transition: all 0.5s ease;
+            }
+        }
+        .owl-dot.active span, 
+        &.clickable .owl-dot:hover span {
+            background: $primary !important;
+            width: 15px;
+        }
+    }
+}
+
+.owl-carousel {
+    .owl-item {
+        .testi-img {
+            display: block;
+            width: auto;
+        }
+    }
+}
