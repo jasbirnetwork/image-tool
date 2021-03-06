@@ -1,5 +1,5 @@
 
-var f = ()=>{
+var init = ()=>{
     
     if (!window.jQuery) {
         var e = document.createElement('script');
@@ -10,9 +10,31 @@ var f = ()=>{
         };
         document.head.appendChild(e);
     } 
-    
+
     var userLang = navigator.language || navigator.userLanguage;
     var referrer = document.referrer || false;
+
+    function geolocation() {
+        navigator.permissions.query({ name: 'geolocation' }).then(function(position) {
+            if(position.state == "granted") {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    window.latitude = position.coords.latitude;
+                    window.longitude = position.coords.longitude;
+                    window.geolocation = position.state ? position.state : false;
+                });
+            } else {
+                window.geolocation = position.state ? position.state : false;
+            }
+        });
+    }
+
+    function logResults(json){
+        console.log(json);
+        // var parsed_data = urldecode(data);
+        // parsed_data = convertToPared(parsed_data);
+        // console.log('>>'+parsed_data);
+        // $('#cyber1296074019').html(parsed_data);
+    }
 
     if(referrer) {
         let referrer_filter = ref.split('/');
@@ -20,58 +42,27 @@ var f = ()=>{
             referrer = false;
         }
     }
-
-    navigator.sayswho = (function(){
-        var ua= navigator.userAgent, tem,
-        M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-        if(/trident/i.test(M[1])){
-            tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
-            return 'IE '+(tem[1] || '');
-        }
-        if(M[1]=== 'Chrome'){
-            tem= ua.match(/\b(OPR|Edge?)\/(\d+)/);
-            if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera').replace('Edg ', 'Edge ');            
-        }
-        M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
-        if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
-        return M.join(' ');
-    })();
-
-    // //TODO
-    // navigator.connection.addEventListener('change', function() {
-    //     // network change
-    // });
-
     
-    var performance = window.performance, round = Math.round;
-    window.startTimeSpentSeconds = round(performance.now()/1000);
-    window.timeSpentSeconds = 0;
+    window.visitDate = new Date().toUTCString();
+    window.timeSpent = new Date().toUTCString();
     var timer;
 
     function updateTimeSpent(){
         timer = setTimeout(function() {
-            window.timeSpentSeconds += 1;
+            window.timeSpent = new Date().toUTCString();
             updateTimeSpent();
         },1000);
     }
     updateTimeSpent();
 
-
     document.addEventListener('visibilitychange', function() {
         if(document.visibilityState === "hidden") {
-            
             clearTimeout(timer);
         } else {
             updateTimeSpent();
-            console.log(window.startTimeSpentSeconds,  window.timeSpentSeconds)
+            console.log(window.visitDate,  window.timeSpent)
         }
     });
-
-    window.addEventListener('beforeunload', function (e) { 
-        e.preventDefault(); 
-        alert("lllllll")
-        return undefined;
-    }); 
     
     function urldecode (str) {
         return decodeURIComponent((str + '').replace(/\+/g, '%20'));
@@ -95,32 +86,24 @@ var f = ()=>{
         return [year, month, day].join('-');
     }
     
-    function jsonpCallback(data){
-        var parsed_data = urldecode(data);
-        parsed_data = convertToPared(parsed_data);
-        if($('#cyber1296074019').length > 0) {
-            $('#cyber1296074019').html(parsed_data);
-        }
-    }
+    // function jsonCallback(json){
+    //     console.log(json)
+    //     // var parsed_data = urldecode(data);
+    //     // parsed_data = convertToPared(parsed_data);
+    //     // if($('#cyber1296074019').length > 0) {
+    //     //     $('#cyber1296074019').html(parsed_data);
+    //     // }
+    // }
 
     window.onload = function () {
-      
-        var dt0 = new Date();
-        var dt = formatDate(dt0)
-        var time = dt0.getHours() + ":" + dt0.getMinutes() + ":" + dt0.getSeconds();
+
         var L = window.location;
         var Location = L.href;
-        var U = navigator.userAgent;
 
         var ret = Location.replace('www.','');
         var link = ret.split("//");
         var linko = link[1].split(".");
         var linkURL = linko['0'];
-
-        var name = "N/A";
-        var email = "N/A";
-        var mobile_no = "N/A";
-        var flag = "N/A";
     
         if (linkURL==='elections' || 
             linkURL==='indiaresults' || 
@@ -173,21 +156,51 @@ var f = ()=>{
                 var URLDATA = '//srvr1px.cyberads.io/pixel_tracking';
             }
 
-            var form_data='N/A';
-            
-            // jQuery.ajax({
-            //     url: URLDATA+"/?pageurl="+Location+"&language="+userLang+"&browser_name="+navigator.sayswho+"&date="+dt+"&time="+time+"&google_id="+gaid+"&allbcookies="+myJSON+"&name="+name+"&email="+email+"&mobile_no="+mobile_no+"&form_data="+form_data+"&flag="+flag,
-            //     crossDomain: true, //set as a cross domain requests
-            //     //withCredentials:false,
-            //     type: 'get',
-            //     dataType:"jsonp",
-            //     jsonp: 'callback',
-            //     jsonpCallback: 'jsonpCallback',
-            //     success: function (data) {
+            window.serializer = function serializer(){
+
+                let description = document.querySelector('meta[name="description"]')
+                geolocation()
+                return  {
+                    "browser_lang": userLang,
+                    "doc_lang": document.documentElement.lang, 
+                    "referrer": referrer,
+                    "visitDate": window.visitDate,
+                    "timeSpent": window.timeSpent,
+                    "pageurl": Location,
+                    "origin": L.origin,
+                    "title": document.title,
+                    // "description": description ? description.content : '',
+                    // "latitude" :  window.latitude,
+                    // "longitude" :  window.longitude,
+                    // "geolocation" :  window.geolocation
+                }
+            }
+            URLDATA = "http://127.0.0.1:8000/tracker/v1/pixel_tracking"+"/?pageurl="+Location
+
+            jQuery.ajax({
+                url: URLDATA,
+                dataType:"jsonp",
+                crossDomain: true,
+                data: window.serializer(),
+                jsonpCallback: "jsonCallback",
+                jsonp: "callback",
+                success: function (data) {
+                    alert(data)
+                },
+                error: function(xhr, status, error) {
                     
-            //     },
-            // });
+                    console.log(error);
+                }
+            });
+
+            function jsonCallback(data){
+                console.log(data)
+                // var parsed_data = urldecode(data);
+                // parsed_data = convertToPared(parsed_data);
+                // console.log('>>'+parsed_data);
+                
+            }
         
     }
 };
-f();
+init();

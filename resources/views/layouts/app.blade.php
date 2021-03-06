@@ -31,7 +31,7 @@
     
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/ad.js') }}"></script>
+    <script src="{{ asset('js/ad.js') }}" async></script>
     <script src="{{ asset('theame/js/app.js') }}" defer></script>
     <script src="{{ asset('fileupload/fileupload.js') }}" defer></script>
     @yield('javascript')
